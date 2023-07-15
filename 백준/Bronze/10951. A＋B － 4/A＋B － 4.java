@@ -9,7 +9,7 @@ public class Main {
 		
 		while (true) {
 			String str = br.readLine();
-			if (str == null || str.equals("")) {
+			if (str == null) {
 				break;
 				
 			}
