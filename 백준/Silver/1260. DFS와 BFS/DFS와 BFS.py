@@ -1,42 +1,46 @@
-# 1260. DFS와 BFS
-from collections import deque
+# DFS
+def DFS(V):
+    visited_DFS[V] = 1 #방문처리
+    DFS_result.append(V)
+    for node in graph[V]:
+        if not visited_DFS[node]:
+            DFS(node)
 
-def dfs(start):
-    visited[start] = True
-    print(start, end=" ")
 
-    for i in graph[start]:
-        if not visited[i]:
-            dfs(i)
-
-def bfs(start):
-    q = deque()
-    q.append(start)
-    visited2[start] = True
-
-    while q:
-        t = q.popleft()
-        print(t, end = ' ')
-
-        for i in graph[t]:
-            if not visited2[i]:
-                visited2[i] = True
-                q.append(i)
+# BFS
+def BFS(V):
+    queue = [V]
+    visited_BFS[V] = 1 #방문처리
+    while queue:
+        V = queue.pop(0)
+        BFS_result.append(V)
+        for node in graph[V]:
+            if not visited_BFS[node]:
+                visited_BFS[node] = 1 # 방문처리
+                queue.append(node)
 
 
 N, M, V = map(int, input().split())
+
+# 인접 리스트
 graph = [[] for _ in range(N+1)]
-visited = [False] * (N + 1)
-visited2 = [False] * (N + 1)
-for _ in range(M):
+for i in range(M):
     s, e = map(int, input().split())
     graph[s].append(e)
     graph[e].append(s)
 
-for i in graph:
-    i.sort()
+for row in range(N+1):
+    graph[row].sort()
 
+# 방문
+visited_DFS = [0]*(N+1)
+visited_BFS = [0]*(N+1)
 
-dfs(V)
-print()
-bfs(V)
+DFS_result = []
+BFS_result = []
+
+DFS(V)
+BFS(V)
+
+print(*DFS_result)
+print(*BFS_result)
