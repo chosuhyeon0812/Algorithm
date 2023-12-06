@@ -3,25 +3,29 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int testcase = sc.nextInt();
-
+		int n = sc.nextInt();
 		
-		for (int i = 0; i < testcase; i++) {
-			String test = sc.next();
-			String[] test1 = test.split("");
+		String arr [] = new String[n];
+		
+		for (int i = 0; i < n; i++) {
+			arr[i] = sc.next();
+		}
+		
+		sc.close();
+		
+		for (int i = 0; i < arr.length; i++) {
 			int score = 0;
-			int bonus = 0;
-	
-			for (int j = 0; j < test1.length; j++) {
-				if (test1[j].equals("O")) {
-					bonus += 1;
-					score += bonus;
-					
+			int sum = 0;
+			
+			for (int j = 0; j < arr[i].length(); j++) {
+				if (arr[i].charAt(j) == 'O') {
+					score++;
 				} else {
-					bonus = 0;
+					score = 0;
 				}
+				sum += score;
 			}
-			System.out.println(score);
+			System.out.println(sum);
 		}
 	}
 }
