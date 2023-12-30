@@ -1,0 +1,58 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
+
+public class Main {
+    static int[] checked;
+    static ArrayList<Integer>[] arr;
+    static int cnt;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int start = Integer.parseInt(st.nextToken());
+
+        checked = new int[n + 1];
+        arr = new ArrayList[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+            arr[i] = new ArrayList<>();
+        }
+
+        for (int i = 0; i < m; i++) {
+            st = new StringTokenizer(br.readLine());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
+
+            arr[s].add(e);
+            arr[e].add(s);
+        }
+
+        for (int i = 1; i <= n; i++) {
+            Collections.sort(arr[i], Collections.reverseOrder());
+        }
+
+        cnt = 1;
+        dfs(start);
+
+        for (int i = 1; i < checked.length; i++) {
+            System.out.println(checked[i]);
+        }
+    }
+
+    static void dfs(int node) {
+        checked[node] = cnt;
+        for (int i : arr[node]) {
+            if (checked[i] == 0) {
+                cnt++;
+                dfs(i);
+            }
+        }
+    }
+}
