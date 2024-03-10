@@ -1,1 +1,1 @@
-Algorithm 공부 repo입니다
+Algorithm 공부 Repo입니다
