@@ -14,7 +14,7 @@ class Solution {
          // 배포할 기능 수를 저장하는 리스트
         List<Integer> release = new ArrayList<>();
         
-         // 첫번째 긴ㅇ의 완료 일수를 기준으로 초기 설정
+         // 첫번째 기능의 완료 일수를 기준으로 초기 설정
         int currentMaxDay = days.get(0);
         int count = 0;
         
