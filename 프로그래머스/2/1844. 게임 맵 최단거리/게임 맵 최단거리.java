@@ -21,7 +21,7 @@ class Solution {
             int y = current[1];
             
             // 목적지에 도달했을 때는 경로의 길이를 반환
-            if(x == n-1 && y == m-1) {
+            if(x == n - 1 && y == m - 1) {
                 return maps[x][y];
             }
             
@@ -38,7 +38,7 @@ class Solution {
                 }
             }
         }
-        // 혹시 몰라 목적지에 도달 못한다면... 그럴 수 없음...
+        // 혹시 몰라 목적지에 도달 못한다면... 
         return -1;
     }
 }
